@@ -1,0 +1,45 @@
+.main {
+  width: 85%;
+  margin: 30px auto;
+  border: 2px solid white;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: white;
+}
+
+.cunsructor {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+body {
+  background-color: #d9dede;
+}
+
+input {
+  border: 2px solid black;
+  border-radius: 10px;
+  height: 25px;
+  width: 90%;
+}
+
+.second {
+  height: 40px;
+}
+
+.add_task {
+  border: 2px solid white;
+  color: white;
+  width: 90%;
+  height: 35px;
+  margin-top: 15px;
+  border-radius: 10px;
+  background-color: rgb(121, 87, 216);
+}
+
+.add_task:hover {
+  border: 2px solid black;
+  border-radius: 10px;
+  cursor: pointer;
+}
