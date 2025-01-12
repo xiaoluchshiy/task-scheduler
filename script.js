@@ -2,7 +2,6 @@ let name = document.querySelector(".name");
 let description = document.querySelector(".description");
 let date = document.querySelector(".date");
 let priority = document.querySelector(".priority");
-
 let add_task = document.querySelector(".add_task");
 
 function create_table() {
@@ -68,4 +67,21 @@ add_task.addEventListener("click", () => {
   delete_btn.addEventListener("click", () => {
     row.remove();
   });
+
+  window.local;
 });
+
+function save_tasks() {
+  let task_massive = [];
+  document.querySelectorAll("table tbody tr").forEach((row) => {
+    let task_object = {
+      check: row[0].checked,
+      name: row[1].innerHTML,
+      description: row[2].innerHTML,
+      date: row[3].innerHTML,
+      priority: row[4].innerHTML,
+    };
+    task_massive.push(task_object);
+  });
+  localStorage.setItem("rows", JSON.stringify(task_massive));
+}
