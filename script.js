@@ -1,5 +1,5 @@
 let name = document.querySelector(".name");
-let description = document.querySelector(".descriptoin");
+let description = document.querySelector(".description");
 let date = document.querySelector(".date");
 let priority = document.querySelector(".priority");
 
@@ -39,9 +39,10 @@ add_task.addEventListener("click", () => {
     alert("не все поля заполнены");
     return;
   }
+
   let row = document.createElement("tr");
   row.innerHTML = `
-  <td><input type="checkbox"></td>
+  <td><input class="checkbox_task" type="checkbox"></td>
   <td>${name_v}</td>
   <td>${description_v}</td>
   <td>${date_v}</td>
@@ -49,6 +50,22 @@ add_task.addEventListener("click", () => {
   <td><button class="delete">delete</button></td>
 `;
   tbody.appendChild(row);
-  console.log(description_v, name_v, priority_v, date_v);
   name.value = "";
+  description.value = "";
+  date.value = "";
+  priority.value = "";
+
+  let checkbox = row.querySelector(".checkbox_task");
+  checkbox.addEventListener("change", () => {
+    if (checkbox.checked) {
+      row.classList.add("solved_task");
+    } else {
+      row.classList.remove("solved_task");
+    }
+  });
+
+  let delete_btn = row.querySelector(".delete");
+  delete_btn.addEventListener("click", () => {
+    row.remove();
+  });
 });

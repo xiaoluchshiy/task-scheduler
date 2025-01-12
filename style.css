@@ -43,3 +43,19 @@ input {
   border-radius: 10px;
   cursor: pointer;
 }
+
+.solved_task {
+  text-decoration: line-through;
+  color: #858585;
+}
+
+table {
+  width: 100%;
+  text-align: center;
+  border: 2px solid black;
+  border-collapse: collapse;
+}
+
+td {
+  border: 2px solid black;
+}
