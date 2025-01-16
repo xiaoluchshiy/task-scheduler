@@ -68,20 +68,59 @@ add_task.addEventListener("click", () => {
     row.remove();
   });
 
-  window.local;
+  save_tasks();
 });
 
 function save_tasks() {
   let task_massive = [];
   document.querySelectorAll("table tbody tr").forEach((row) => {
+    let checkbox = row.querySelector(".checkbox_task");
     let task_object = {
-      check: row[0].checked,
-      name: row[1].innerHTML,
-      description: row[2].innerHTML,
-      date: row[3].innerHTML,
-      priority: row[4].innerHTML,
+      check: checkbox.checked,
+      name: row.children[1].innerHTML,
+      description: row.children[2].innerHTML,
+      date: row.children[3].innerHTML,
+      priority: row.children[4].innerHTML,
     };
     task_massive.push(task_object);
   });
   localStorage.setItem("rows", JSON.stringify(task_massive));
 }
+
+function load_tasks() {
+  let tasks = JSON.parse(localStorage.getItem("rows"));
+  if (tasks) {
+    let tbody = document.querySelector("table tbody");
+    tasks.forEach((task) => {
+      let row = document.createElement("tr");
+      row.innerHTML = `
+      <td><input class="checkbox_task" type="checkbox" ${
+        task.check ? "checked" : ""
+      }></td>
+      <td>${task.name}</td>
+      <td>${task.description}</td>
+      <td>${task.date}</td>
+      <td>${task.priority}</td>
+      <td><button class="delete">delete</button></td>
+      `;
+      tbody.appendChild(row);
+      let checkbox = row.querySelector(".checkbox_task");
+      checkbox.addEventListener("change", () => {
+        if (checkbox.checked) {
+          row.classList.add("solved_task");
+        } else {
+          row.classList.remove("solved_task");
+        }
+        save_tasks();
+      });
+
+      let delete_btn = row.querySelector(".delete");
+      delete_btn.addEventListener("click", () => {
+        row.remove();
+        save_tasks();
+      });
+    });
+  }
+}
+
+load_tasks();
