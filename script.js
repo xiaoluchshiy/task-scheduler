@@ -46,7 +46,7 @@ add_task.addEventListener("click", () => {
   <td>${description_v}</td>
   <td>${date_v}</td>
   <td>${priority_v}</td>
-  <td><button class="delete">delete</button></td>
+  <td><img class="delete" src="https://cdn-icons-png.flaticon.com/512/3405/3405244.png"></td>
 `;
   tbody.appendChild(row);
   name.value = "";
@@ -101,7 +101,7 @@ function load_tasks() {
       <td>${task.description}</td>
       <td>${task.date}</td>
       <td>${task.priority}</td>
-      <td><button class="delete">delete</button></td>
+      <td><img class="delete" src="https://cdn-icons-png.flaticon.com/512/3405/3405244.png"></td>
       `;
       tbody.appendChild(row);
       let checkbox = row.querySelector(".checkbox_task");
