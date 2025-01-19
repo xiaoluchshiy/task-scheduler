@@ -39,12 +39,17 @@ add_task.addEventListener("click", () => {
     return;
   }
 
+  let change_data = new Date(date_v).toLocaleDateString("en-US", {
+    year: "2-digit",
+    month: "2-digit",
+    day: "2-digit",
+  });
   let row = document.createElement("tr");
   row.innerHTML = `
   <td><input class="checkbox_task" type="checkbox"></td>
   <td>${name_v}</td>
   <td>${description_v}</td>
-  <td>${date_v}</td>
+  <td>${change_data}</td>
   <td>${priority_v}</td>
   <td><img class="delete" src="https://cdn-icons-png.flaticon.com/512/3405/3405244.png"></td>
 `;
