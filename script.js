@@ -66,6 +66,7 @@ add_task.addEventListener("click", () => {
     } else {
       row.classList.remove("solved_task");
     }
+    save_tasks();
   });
 
   let delete_btn = row.querySelector(".delete");
@@ -90,6 +91,7 @@ function save_tasks() {
     task_massive.push(task_object);
   });
   localStorage.setItem("rows", JSON.stringify(task_massive));
+  console.log(task_massive);
 }
 
 function load_tasks() {
@@ -110,6 +112,9 @@ function load_tasks() {
       `;
       tbody.appendChild(row);
       let checkbox = row.querySelector(".checkbox_task");
+      if (task.check) {
+        row.classList.add("solved_task");
+      }
       checkbox.addEventListener("change", () => {
         if (checkbox.checked) {
           row.classList.add("solved_task");
