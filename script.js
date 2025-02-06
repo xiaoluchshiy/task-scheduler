@@ -26,9 +26,9 @@ function create_table() {
 
 create_table();
 
-add_task.addEventListener("click", () => {
+add_task.addEventListener("click", (e) => {
   let tbody = document.querySelector("table tbody");
-
+  console.log(e)
   let name_v = name.value.trim();
   let description_v = description.value.trim();
   let date_v = date.value;
